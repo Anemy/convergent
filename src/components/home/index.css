@@ -1,0 +1,57 @@
+.concentric-js-home {
+  background-color: #FAFAFA;
+  color: #333;
+  font-family: 'Roboto',arial,sans-serif;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.concentric-js-home-background {
+  background-color: #FAFAFA;
+  /* background-image: -webkit-gradient(radial,center center,0,center center,460,from(#f5f6f7),to(#FAFAFA));
+  background-image: -webkit-radial-gradient(circle,#f5f6f7,#FAFAFA);
+  background-image: -moz-radial-gradient(circle,#f5f6f7,#FAFAFA);
+  background-image: -o-radial-gradient(circle,#f5f6f7,#FAFAFA);
+  background-repeat: no-repeat; */
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: -5;
+}
+
+.concentric-js-dotted-background {
+  background-image: -webkit-repeating-radial-gradient(center center, rgba(0,0,0,.25), rgba(0,0,0,.25) 1px, transparent 1px, transparent 100%);
+  background-image: -moz-repeating-radial-gradient(center center, rgba(0,0,0,.25), rgba(0,0,0,.25) 1px, transparent 1px, transparent 100%);
+  background-image: -ms-repeating-radial-gradient(center center, rgba(0,0,0,.25), rgba(0,0,0,.25) 1px, transparent 1px, transparent 100%);
+  background-image: repeating-radial-gradient(center center, rgba(0,0,0,.25), rgba(0,0,0,.25) 1px, transparent 1px, transparent 100%);
+  -webkit-background-size: 36px 36px;
+  -moz-background-size: 36px 36px;
+  background-size: 36px 36px;
+  background-repeat: repeat;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 3;
+}
+
+.concentric-js-home-title {
+  font-size: 36px;
+  line-height: 36px;
+  margin: 0;
+  margin-top: 16px;
+  padding: 0;
+}
+
+.concentric-js-home-description {
+  color: #777;
+  font-size: 16px;
+  line-height: 16px;
+  margin: 0;
+  margin-top: 6px;
+  padding: 0;
+}

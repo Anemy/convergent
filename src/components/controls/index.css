@@ -1,0 +1,112 @@
+.concentric-js-controls-container {
+  margin-right: 16px;
+  position: fixed;
+  text-align: right;
+  right: 0;
+  top: 12px;
+}
+
+.concentric-js-controls-container-active {
+  right: 280px;
+}
+
+.concentric-js-svg-controls-container {
+  bottom: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 280px;
+}
+
+.concentric-js-controls-randomize-button {
+  margin-top: 8px;
+}
+
+.concentric-js-history-forward-button {
+  margin-left: 4px; 
+}
+
+.concentric-js-history-forward-button {
+  margin-left: 8px;
+}
+
+.concentric-js-controls-history {
+  margin-top: 8px;
+}
+
+.concentric-js-controls-github-link {
+  width: 32px;
+  position: fixed;
+  top: 4px;
+  left: 4px;
+}
+
+.concentric-js-show-svg-code-button {
+  bottom: 60px;
+  position: fixed;
+  right: 16px;
+}
+
+.concentric-js-show-link-button {
+  bottom: 12px;
+  position: fixed;
+  right: 16px;
+}
+
+.concentric-js-svg-popup-container {
+  left: 0;
+  position: fixed;
+  text-align: center;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+}
+
+.concentric-js-svg-popup-background {
+  background-color: rgba(0, 0, 0, 0.3);
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: -1;
+}
+
+.concentric-js-svg-popup-modal {
+  background-color: #EEE;
+  color: #333;
+  margin: auto;
+  margin-top: 10%;
+  position: relative;
+  width: 60%;
+}
+
+.concentric-js-svg-popup-top-area {
+  background-color: #FAFAFA;
+  padding: 8px 16px;
+  text-align: left;
+}
+
+.concentric-js-svg-popup-top-title {
+  font-size: 24px;
+  margin: 0;
+  padding: 0;
+  word-wrap: break-word;
+}
+
+.concentric-js-svg-popup-close-button {
+  position: absolute !important;
+  top: 0px;
+  right: 0px;
+}
+
+.concentric-js-svg-popup-body {
+  padding: 20px;
+}
+
+.concentric-js-svg-popup-textarea {
+  box-sizing: border-box;
+  min-height: 80px;
+  padding: 8px;
+  width: 100%;
+}

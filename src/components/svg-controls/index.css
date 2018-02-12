@@ -1,0 +1,43 @@
+.concentric-js-svg-controls {
+  background-color: white;
+  bottom: 0;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+  left: 0;
+  margin: 0;
+  padding-top: 0;
+  position: absolute;
+  right: 0;
+  text-align: left;
+  top: 0;
+}
+
+.concentric-js-svg-controls-about {
+  color: #333;
+  padding: 16px;
+  padding-top: 6px;
+}
+
+.concentric-js-svg-controls-about a {
+  font-size: 16px;
+}
+
+.concentric-js-svg-controls-about-desc {
+  color: #666;
+}
+
+.concentric-js-svg-controls-about-desc:nth-child(3) {
+  margin-top: 10px;
+}
+
+.concentric-js-svg-controls-subheader {
+  /* padding-left: 0 !important; */
+}
+
+.concentric-js-svg-controls-algorithm {
+  margin-top: -10px;
+  padding-left: 10px;
+}
+
+.concentric-js-svg-controls-list-nested-item {
+  padding-left: 15px;
+}
