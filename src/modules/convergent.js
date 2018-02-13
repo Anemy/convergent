@@ -1,11 +1,11 @@
-import {
-  generateInitialLayout,
-  generateLayoutBySeedAndVersion,
-  generateRandomLayout
-} from '../utils/layouts';
+// import {
+//   generateInitialLayout,
+//   generateLayoutBySeedAndVersion,
+//   generateRandomLayout
+// } from '../utils/layouts';
 
 import {
-  VERSIONS
+  ALGORITHMS
 } from '../constants';
 
 export const DONE_BUILDING = 'svg/DONE_BUILDING';
@@ -36,7 +36,7 @@ const initialState = {
   history: [],
   future: [],
   isBuilding: false,
-  present: generateInitialLayout(width, height),
+  present: {}, // width, height
   randomizeSettings: {
     algorithm: ALGORITHMS.FULL_RANDOM
   },
@@ -66,7 +66,7 @@ export default (state = initialState, action) => {
 
         newState.present = {
           ...state.present,
-          ...generateLayoutBySeedAndVersion(width, height, newPresent.seed, newPresent.version)
+          // ...generateLayoutBySeedAndVersion(width, height, newPresent.seed, newPresent.version)
         };
 
         if (newState.future.length > maxHistoryLength) {
@@ -96,7 +96,7 @@ export default (state = initialState, action) => {
 
         newState.present = {
           ...state.present,
-          ...generateLayoutBySeedAndVersion(width, height, newPresent.seed, newPresent.version)
+          // ...generateLayoutBySeedAndVersion(width, height, newPresent.seed, newPresent.version)
         };
 
         if (newState.history.length > maxHistoryLength) {
@@ -135,7 +135,7 @@ export default (state = initialState, action) => {
 
       newState.present = {
         ...state.present,
-        ...generateRandomLayout(width, height, newState.randomizeAlgorithm)
+        // ...generateRandomLayout(width, height, newState.randomizeAlgorithm)
       };
 
       if (newState.history.length > maxHistoryLength) {

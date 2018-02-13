@@ -8,13 +8,13 @@ import React, { Component } from 'react';
 import { CompactPicker } from 'react-color';
 import { connect } from 'react-redux';
 
-import {
-  updateBackground,
-  updateVisual,
-  setRandomizeAlgorithm
-} from '../../modules/convergent';
+// import {
+//   updateBackground,
+//   updateVisual,
+//   setRandomizeAlgorithm
+// } from '../../modules/convergent';
 
-import { VERSIONS } from '../../constants';
+import { ALGORITHMS } from '../../constants';
 
 import { createColorString, getContrastingBinaryColor } from '../../utils/color';
 
@@ -24,8 +24,8 @@ import './index.css';
 // progenart.com
 // procgenart.com
 
-// const buttonBackgroundColor = '#FAFAFA';
-// const buttonLabelColor = '#333';
+const buttonBackgroundColor = '#FAFAFA';
+const buttonLabelColor = '#333';
 
 class SvgControls extends Component {
   setBackgroundColor = color => {
@@ -85,18 +85,7 @@ class SvgControls extends Component {
             }}
             value={randomizeAlgorithm}
           >
-            <MenuItem value={VERSIONS.FULL_RANDOM} primaryText="Random" />
-            <MenuItem value={VERSIONS.TOPOLOGY} primaryText="Topology 💥" />
-            <MenuItem value={VERSIONS.TOPOLOGY_GRADIENT_PACK} primaryText="Topology with select colors" />
-            <MenuItem value={VERSIONS.TOPOLOGY_GRADIENTS} primaryText="Topology with select gradients" />
-            <MenuItem value={VERSIONS.BASIC_FIRST_GEN} primaryText="Random polygon" />
-            <MenuItem value={VERSIONS.BASIC_FIRST_GEN_BW} primaryText="Random polygon black and white" />
-            <MenuItem value={VERSIONS.BASIC_FIRST_GEN_GRADIENT_PACK} primaryText="Random polygon with select colors" />
-            <MenuItem value={VERSIONS.BASIC_FIRST_GEN_GRADIENTS} primaryText="Random polygons with select gradients" />
-            <MenuItem value={VERSIONS.WATER_COLOR} primaryText="Water color" style={{fontStyle: 'italic'}} />
-            <MenuItem value={VERSIONS.TRIANGLES} primaryText="Triangles" />
-            <MenuItem value={VERSIONS.TRIANGLES_MULTI} primaryText="Triangles 🎉🎉 - Work in progress" />
-            <MenuItem value={VERSIONS.INIT_FIRST_GEN} primaryText="Initial" />
+            <MenuItem value={ALGORITHMS.FULL_RANDOM} primaryText="Random" />
           </SelectField>
           <ListItem
             primaryText="Background"
@@ -138,11 +127,11 @@ class SvgControls extends Component {
 }
 
 const mapStateToProps = state => {
-  const layout = state.canvas.present;
+  const layout = state.convergent.present;
 
-  const shape = layout.shapes[0];
+  // const shape = layout.shapes[0];
 
-  const shapeOuterColor = shape.colors[shape.colors.length - 1];
+  const shapeOuterColor = buttonBackgroundColor; // shape.colors[shape.colors.length - 1];
 
   return {
     backgroundColor: layout.backgroundColor,
@@ -150,20 +139,20 @@ const mapStateToProps = state => {
     contrastPrimarySVGColor: getContrastingBinaryColor(shapeOuterColor),
     radialBackground: layout.radialBackground,
     radialBackgroundColor: layout.radialBackgroundColor,
-    randomizeAlgorithm: state.canvas.randomizeAlgorithm,
-    svgRef: state.canvas.svgRef
+    randomizeAlgorithm: state.convergent.randomizeAlgorithm,
+    svgRef: state.convergent.svgRef
   };
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    setRandomizeAlgorithm: newAlgorithm => dispatch(setRandomizeAlgorithm(newAlgorithm)),
-    updateBackground: newBackground => dispatch(updateBackground(newBackground)),
-    updateVisual: change => dispatch(updateVisual(change))
-  };
-};
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     setRandomizeAlgorithm: newAlgorithm => dispatch(setRandomizeAlgorithm(newAlgorithm)),
+//     updateBackground: newBackground => dispatch(updateBackground(newBackground)),
+//     updateVisual: change => dispatch(updateVisual(change))
+//   };
+// };
 
 export default connect(
   mapStateToProps, 
-  mapDispatchToProps
+  null
 )(SvgControls);

@@ -213,8 +213,8 @@ class Controls extends Component {
 }
 
 const mapStateToProps = state => {
-  const layout = state.canvas.present;
-  const outerColor = layout.shapes[0].colors[layout.shapes[0].colors.length - 1];
+  const layout = state.convergent.present;
+  const outerColor = {r: 250, g: 250, b: 250};// layout.shapes[0].colors[layout.shapes[0].colors.length - 1];
 
   const baseURL = `${window.location.origin}${window.location.pathname}#/`;
   const shareableString = `${baseURL}?shared=${layout.seed}&v=${layout.version}`;
@@ -223,7 +223,7 @@ const mapStateToProps = state => {
     randomizeButtonBackgroundColor: createColorString(outerColor),
     randomizeButtonLabelColor: getContrastingBinaryColor(outerColor),
     shareableString,
-    svgRef: state.canvas.svgRef
+    svgRef: state.convergent.svgRef
   }
 };
 

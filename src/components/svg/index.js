@@ -10,8 +10,6 @@ import {
 
 import './index.css';
 
-import Shape from './shape';
-
 class SVG extends Component {
   componentDidMount() {
     this.props.setSvgRef(this.svgRef);
@@ -21,25 +19,6 @@ class SVG extends Component {
     if (this.props.isBuilding) {
       this.props.doneBuildingVisual();
     }
-  }
-
-  renderShapes() {
-    const {
-      shapes
-    } = this.props;
-
-    const renderedShapes = [];
-
-    _.each(shapes, (shape, index) => {
-      renderedShapes.push(
-        <Shape
-          id={index}
-          key={index}
-        />
-      );
-    });
-
-    return renderedShapes;
   }
 
   render() {
@@ -61,20 +40,18 @@ class SVG extends Component {
             `radial-gradient(${radialBackgroundColor}, ${backgroundColor})` : backgroundColor
         }}
         width={width}
-      >
-        {this.renderShapes()}
-      </svg>
+      />
     );
   }
 };
 
 const mapStateToProps = state => {
-  const layout = state.canvas.present;
+  const layout = state.convergent.present;
 
   return {
     backgroundColor: layout.backgroundColor,
     height: layout.height,
-    isBuilding: state.canvas.isBuilding,
+    isBuilding: state.convergent.isBuilding,
     radialBackground: layout.radialBackground,
     radialBackgroundColor: layout.radialBackgroundColor,
     shapes: layout.shapes,
