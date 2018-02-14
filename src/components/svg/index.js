@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -32,7 +31,7 @@ class SVG extends Component {
     
     return (
       <svg
-        className="concentric-js-visual-container"
+        className="convergent-js-visual-container"
         height={height}
         ref={ref => { this.svgRef = ref; }}
         style={{

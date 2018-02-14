@@ -1,12 +1,11 @@
-import _ from 'lodash';
-import Divider from 'material-ui/Divider';
-import { List, ListItem } from 'material-ui/List';
-import MenuItem from 'material-ui/MenuItem';
-import Subheader from 'material-ui/Subheader';
-import SelectField from 'material-ui/SelectField';
+// import Divider from 'material-ui/Divider';
+import { ListItem } from 'material-ui/List'; // List
+// import MenuItem from 'material-ui/MenuItem';
+// import Subheader from 'material-ui/Subheader';
+// import SelectField from 'material-ui/SelectField';
 import Toggle from 'material-ui/Toggle';
 import React, { Component } from 'react';
-import { CompactPicker } from 'react-color';
+// import { CompactPicker } from 'react-color';
 import { connect } from 'react-redux';
 
 import {
@@ -40,7 +39,7 @@ const mapStateToProps = (state, props) => {
     settingIndex
   } = props;
 
-  const layout = state.convergent.present.layout
+  const layout = state.convergent.present;
 
   // let layoutSetting;
   // if (_.isArray(settingIndex)) {

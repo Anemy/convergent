@@ -9,9 +9,9 @@ import SVG from '../svg';
 
 const Home = props => {
   return (
-    <div className="concentric-js-home">
+    <div className="convergent-js-home">
       <div
-        className="concentric-js-home-background"
+        className="convergent-js-home-background"
       />
       <SVG />
       {props.isBuilding && <Loader />}

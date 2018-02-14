@@ -14,15 +14,15 @@ export const createRandomColor = () => ({
 
 export default () => {
   return (
-    <div className="concentric-loader">
+    <div className="convergent-loader">
       <div
-        className="concentric-loader-outer-box"
+        className="convergent-loader-outer-box"
         style={{
           backgroundColor: createColorString(createRandomColor())
         }}
       />
       <div
-        className="concentric-loader-inner-box"
+        className="convergent-loader-inner-box"
         style={{
           backgroundColor: createColorString(createRandomColor())
         }}

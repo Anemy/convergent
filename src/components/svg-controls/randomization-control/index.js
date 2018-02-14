@@ -1,7 +1,7 @@
-export default (props) => {
-  console.log('Rener randomization control', props);
+import React from 'react';
 
-  return {
+export default function(props) {
+  console.log('Render randomization control', props);
 
-  };
+  return <div />;
 }

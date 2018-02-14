@@ -1,6 +1,6 @@
 import {
-  generateInitialLayout,
-  generateRandomLayout
+  generateLayoutUsingConfig,
+  generateLayoutUsingConfigAndSeed
 } from '../utils/layouts';
 
 import {
@@ -41,8 +41,7 @@ const initialState = {
   history: [],
   future: [],
   isBuilding: false,
-  present: generateInitialLayout(width, height),
-  randomizationConfig: initialConfig,
+  present: generateLayoutUsingConfig(width, height, initialConfig),
   randomizeAlgorithm: ALGORITHMS.FULL_RANDOM,
   svgRef: null,
   width
@@ -61,17 +60,11 @@ export default (state = initialState, action) => {
           isBuilding: true
         };
 
-        newState.future.unshift({
-          version: state.present.version,
-          seed: state.present.seed
-        });
+        newState.future.unshift(state.present);
 
         const newPresent = newState.history.shift();
 
-        newState.present = {
-          ...state.present,
-          // ...generateLayoutBySeedAndVersion(width, height, newPresent.seed, newPresent.version)
-        };
+        newState.present = generateLayoutUsingConfigAndSeed(width, height, newPresent.randomizationConfig, newPresent.seed);
 
         if (newState.future.length > maxHistoryLength) {
           newState.future.pop();
@@ -91,17 +84,11 @@ export default (state = initialState, action) => {
           isBuilding: true
         };
 
-        newState.history.unshift({
-          version: state.present.version,
-          seed: state.present.seed
-        });
+        newState.history.unshift(state.present);
 
         const newPresent = newState.future.shift();
 
-        newState.present = {
-          ...state.present,
-          // ...generateLayoutBySeedAndVersion(width, height, newPresent.seed, newPresent.version)
-        };
+        newState.present = generateLayoutUsingConfigAndSeed(width, height, newPresent.randomizationConfig, newPresent.seed);
 
         if (newState.history.length > maxHistoryLength) {
           newState.history.pop();
@@ -127,20 +114,15 @@ export default (state = initialState, action) => {
       };
 
     case RANDOMIZE:
-      // Note: Not a deep copy.
       const newState = {
         ...state
       };
 
-      newState.history.unshift({
-        version: state.present.version,
-        seed: state.present.seed
-      });
+      newState.history.unshift(state.present);
 
-      newState.present = {
-        ...state.present,
-        // ...generateRandomLayout(width, height, newState.randomizeAlgorithm)
-      };
+      const configDeepClone = JSON.parse(JSON.stringify(newState.present.randomizationConfig));
+
+      newState.present = generateLayoutUsingConfig(width, height, configDeepClone);
 
       if (newState.history.length > maxHistoryLength) {
         newState.history.pop();

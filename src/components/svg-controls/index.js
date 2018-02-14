@@ -1,20 +1,20 @@
 import _ from 'lodash';
 import Divider from 'material-ui/Divider';
 import { List, ListItem } from 'material-ui/List';
-import MenuItem from 'material-ui/MenuItem';
-import Subheader from 'material-ui/Subheader';
-import SelectField from 'material-ui/SelectField';
-import Toggle from 'material-ui/Toggle';
+// import MenuItem from 'material-ui/MenuItem';
+// import Subheader from 'material-ui/Subheader';
+// import SelectField from 'material-ui/SelectField';
+// import Toggle from 'material-ui/Toggle';
 import React, { Component } from 'react';
-import { CompactPicker } from 'react-color';
+// import { CompactPicker } from 'react-color';
 import { connect } from 'react-redux';
 
-import {
-  updateVisual,
-  setRandomizeAlgorithm
-} from '../../modules/convergent';
+// import {
+//   updateVisual,
+//   setRandomizeAlgorithm
+// } from '../../modules/convergent';
 
-import { ALGORITHMS } from '../../constants';
+// import { ALGORITHMS } from '../../constants';
 
 import { createColorString, getContrastingBinaryColor } from '../../utils/color';
 
@@ -34,10 +34,12 @@ class SvgControls extends Component {
     } = this.props;
 
     return _.map(layout, (layoutItem, settingIndex) => {
-      return <LayoutControl
-        key={settingIndex}
-        settingIndex={settingIndex}
-      />
+      if (settingIndex !== 'randomizationConfig') {
+        return <LayoutControl
+          key={settingIndex}
+          settingIndex={settingIndex}
+        />
+      }
     });
   }
 
@@ -56,10 +58,10 @@ class SvgControls extends Component {
 
   render() {
     return (
-      <div className="concentric-js-svg-controls">
+      <div className="convergent-js-svg-controls">
         <List>
-          <div className="concentric-js-svg-controls-about">
-            <div className="concentric-js-svg-controls-about-desc">
+          <div className="convergent-js-svg-controls-about">
+            <div className="convergent-js-svg-controls-about-desc">
               Coded by <a
                 href="http://rhyshowell.com"
                 target="_blank"
@@ -70,12 +72,9 @@ class SvgControls extends Component {
             </div>
           </div>
           <Divider />
-          <Subheader
-            className="concentric-js-svg-controls-subheader"
-          >Controls</Subheader>
           {/* TODO: On changing this, we should make sure the user is cool with changing their set up randomizer. */}
           {/* <SelectField
-            className="concentric-js-svg-controls-algorithm"
+            className="convergent-js-svg-controls-algorithm"
             floatingLabelText="Randomize Algorithm"
             onChange={this.handleAlgorithmChange}
             selectedMenuItemStyle={{
@@ -86,17 +85,17 @@ class SvgControls extends Component {
             <MenuItem value={ALGORITHMS.FULL_RANDOM} primaryText="Random" />
           </SelectField> */}
           <ListItem
-            primaryText="Controls"
+            primaryText="View Controls"
             initiallyOpen={true}
             primaryTogglesNestedList={true}
             nestedItems={this.renderLayoutControls()}
           />
-          {/* <ListItem
-            primaryText="Randomizer"
-            initiallyOpen={true}
+          <ListItem
+            primaryText="Randomizer Controls"
+            initiallyOpen={false}
             primaryTogglesNestedList={true}
             nestedItems={this.renderRandomizationConfig()}
-          /> */}
+          />
         </List>
       </div>
     );
@@ -105,7 +104,7 @@ class SvgControls extends Component {
 
 const mapStateToProps = state => {
   const layout = state.convergent.present;
-  const randomizationConfig = state.convergent.randomizationConfig;
+  const randomizationConfig = state.convergent.present.randomizationConfig;
 
   const shapeOuterColor = {r: 250, g: 250, b: 250};
 
@@ -119,12 +118,12 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    setRandomizeAlgorithm: newAlgorithm => dispatch(setRandomizeAlgorithm(newAlgorithm)),
-    updateVisual: change => dispatch(updateVisual(change))
-  };
-};
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     setRandomizeAlgorithm: newAlgorithm => dispatch(setRandomizeAlgorithm(newAlgorithm)),
+//     updateVisual: change => dispatch(updateVisual(change))
+//   };
+// };
 
 export default connect(
   mapStateToProps, 

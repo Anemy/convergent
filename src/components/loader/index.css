@@ -1,7 +1,7 @@
-.concentric-loader  {
+.convergent-loader  {
   width: 3em;
   height: 3em;
-  animation: concentricLoaderAnim 1.25s infinite;
+  animation: convergentLoaderAnim 1.25s infinite;
   outline: 1px solid transparent;
   z-index: 10000000;
   position: absolute;
@@ -9,16 +9,16 @@
   bottom: 3em;
 }
 
-.concentric-loader-outer-box {
+.convergent-loader-outer-box {
   border-radius: 50%;
   height: 3em;
   width: 3em;
   background-color: #eee;
   outline: 1px solid transparent;
   position: fixed;
-  animation: concentricLoaderOuterBoxAnim 0.5s;
+  animation: convergentLoaderOuterBoxAnim 0.5s;
 }
-.concentric-loader-inner-box {
+.convergent-loader-inner-box {
   border-radius: 50%;
   height: 3em;
   width: 3em;
@@ -26,20 +26,20 @@
   position: fixed;
   z-index: 1;
   outline: 1px solid transparent;
-  animation: concentricLoaderInnerBoxAnim 1.25s alternate infinite ease-in-out;
+  animation: convergentLoaderInnerBoxAnim 1.25s alternate infinite ease-in-out;
 }
 
-@keyframes concentricLoaderOuterBoxAnim {
+@keyframes convergentLoaderOuterBoxAnim {
   0% {transform: scale(0);}
   100% {transform: scale(1);}
 }
 
-@keyframes concentricLoaderInnerBoxAnim {
+@keyframes convergentLoaderInnerBoxAnim {
   0% {transform: scale(0);}
   100% {transform: scale(0.8);}
 }
 
-@keyframes concentricLoaderAnim {
+@keyframes convergentLoaderAnim {
   0% {transform: rotate(45deg);}
   100% {transform: rotate(135deg);}
 }

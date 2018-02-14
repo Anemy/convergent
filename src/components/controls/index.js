@@ -37,15 +37,15 @@ class Controls extends Component {
     const { shareableString } = this.props;
 
     return (
-      <div className="concentric-js-svg-popup-container">
+      <div className="convergent-js-svg-popup-container">
         <div
-          className="concentric-js-svg-popup-background"
+          className="convergent-js-svg-popup-background"
           onClick={() => this.toggleShowLink()}
         />
-        <div className="concentric-js-svg-popup-modal">
-          <div className="concentric-js-svg-popup-top-area">
+        <div className="convergent-js-svg-popup-modal">
+          <div className="convergent-js-svg-popup-top-area">
             <a
-              className="concentric-js-svg-popup-top-title"
+              className="convergent-js-svg-popup-top-title"
               href={shareableString}
               target="_blank"
               rel="noopener noreferrer"
@@ -53,7 +53,7 @@ class Controls extends Component {
               {shareableString}
             </a>
             <IconButton
-              className="concentric-js-svg-popup-close-button"
+              className="convergent-js-svg-popup-close-button"
               onClick={() => this.toggleShowLink()}
             >
               <Close style={{fill: buttonLabelColor}} />
@@ -68,26 +68,26 @@ class Controls extends Component {
     const { svgCode } = this.state;
 
     return (
-      <div className="concentric-js-svg-popup-container">
+      <div className="convergent-js-svg-popup-container">
         <div
-          className="concentric-js-svg-popup-background"
+          className="convergent-js-svg-popup-background"
           onClick={() => this.toggleShowSVGCode()}
         />
-        <div className="concentric-js-svg-popup-modal">
-          <div className="concentric-js-svg-popup-top-area">
-            <h2 className="concentric-js-svg-popup-top-title">
+        <div className="convergent-js-svg-popup-modal">
+          <div className="convergent-js-svg-popup-top-area">
+            <h2 className="convergent-js-svg-popup-top-title">
               SVG Code
             </h2>
             <IconButton
-              className="concentric-js-svg-popup-close-button"
+              className="convergent-js-svg-popup-close-button"
               onClick={() => this.toggleShowSVGCode()}
             >
               <Close style={{fill: buttonLabelColor}} />
             </IconButton>
           </div>
-          <div className="concentric-js-svg-popup-body">
+          <div className="convergent-js-svg-popup-body">
             <textarea
-              className="concentric-js-svg-popup-textarea"
+              className="convergent-js-svg-popup-textarea"
               defaultValue={svgCode}
             />
           </div>
@@ -138,13 +138,13 @@ class Controls extends Component {
     return (
       <MuiThemeProvider>
         <div
-          className={'concentric-js-controls-container' + (showSVGControls ? ' concentric-js-controls-container-active' : '')}
+          className={'convergent-js-controls-container' + (showSVGControls ? ' convergent-js-controls-container-active' : '')}
         >
           {showSVGCode && this.showSVGCodePopup()}
           {showShareableLink && this.showLinkPopup()}
           <a
-            className="concentric-js-controls-github-link"
-            href="https://github.com/Anemy/concentric"
+            className="convergent-js-controls-github-link"
+            href="https://github.com/Anemy/convergent"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -160,13 +160,13 @@ class Controls extends Component {
             </FloatingActionButton>
           </div>
           <RaisedButton
-            className="concentric-js-controls-randomize-button"
+            className="convergent-js-controls-randomize-button"
             backgroundColor={randomizeButtonBackgroundColor}
             onClick={() => randomizeVizual()}
             label="Randomize"
             labelColor={randomizeButtonLabelColor}
           />
-          <div className="concentric-js-controls-history">
+          <div className="convergent-js-controls-history">
             <FloatingActionButton
               backgroundColor={buttonBackgroundColor}
               mini
@@ -176,7 +176,7 @@ class Controls extends Component {
             </FloatingActionButton>
             <FloatingActionButton
               backgroundColor={buttonBackgroundColor}
-              className="concentric-js-history-forward-button"
+              className="convergent-js-history-forward-button"
               mini
               onClick={() => historyForward()}
             >
@@ -185,20 +185,20 @@ class Controls extends Component {
           </div>
           <RaisedButton
             backgroundColor={buttonBackgroundColor}
-            className="concentric-js-show-svg-code-button"
+            className="convergent-js-show-svg-code-button"
             onClick={() => this.toggleShowSVGCode()}
             label="Show Svg Code"
             labelColor={buttonLabelColor}
           />
           <RaisedButton
             backgroundColor={buttonBackgroundColor}
-            className="concentric-js-show-link-button"
+            className="convergent-js-show-link-button"
             onClick={() => this.toggleShowLink()}
             label="Get Shareable Link"
             labelColor={buttonLabelColor}
           />
           {showSVGControls && 
-            <div className="concentric-js-svg-controls-container">
+            <div className="convergent-js-svg-controls-container">
               <SvgControls />
             </div>
           }

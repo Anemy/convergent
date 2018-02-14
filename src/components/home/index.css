@@ -1,4 +1,4 @@
-.concentric-js-home {
+.convergent-js-home {
   background-color: #FAFAFA;
   color: #333;
   font-family: 'Roboto',arial,sans-serif;
@@ -7,7 +7,7 @@
   text-align: center;
 }
 
-.concentric-js-home-background {
+.convergent-js-home-background {
   background-color: #FAFAFA;
   /* background-image: -webkit-gradient(radial,center center,0,center center,460,from(#f5f6f7),to(#FAFAFA));
   background-image: -webkit-radial-gradient(circle,#f5f6f7,#FAFAFA);
@@ -22,7 +22,7 @@
   z-index: -5;
 }
 
-.concentric-js-dotted-background {
+.convergent-js-dotted-background {
   background-image: -webkit-repeating-radial-gradient(center center, rgba(0,0,0,.25), rgba(0,0,0,.25) 1px, transparent 1px, transparent 100%);
   background-image: -moz-repeating-radial-gradient(center center, rgba(0,0,0,.25), rgba(0,0,0,.25) 1px, transparent 1px, transparent 100%);
   background-image: -ms-repeating-radial-gradient(center center, rgba(0,0,0,.25), rgba(0,0,0,.25) 1px, transparent 1px, transparent 100%);
@@ -39,7 +39,7 @@
   z-index: 3;
 }
 
-.concentric-js-home-title {
+.convergent-js-home-title {
   font-size: 36px;
   line-height: 36px;
   margin: 0;
@@ -47,7 +47,7 @@
   padding: 0;
 }
 
-.concentric-js-home-description {
+.convergent-js-home-description {
   color: #777;
   font-size: 16px;
   line-height: 16px;

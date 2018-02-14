@@ -1,4 +1,4 @@
-.concentric-js-svg-controls {
+.convergent-js-svg-controls {
   background-color: white;
   bottom: 0;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
@@ -11,33 +11,33 @@
   top: 0;
 }
 
-.concentric-js-svg-controls-about {
+.convergent-js-svg-controls-about {
   color: #333;
   padding: 16px;
   padding-top: 6px;
 }
 
-.concentric-js-svg-controls-about a {
+.convergent-js-svg-controls-about a {
   font-size: 16px;
 }
 
-.concentric-js-svg-controls-about-desc {
+.convergent-js-svg-controls-about-desc {
   color: #666;
 }
 
-.concentric-js-svg-controls-about-desc:nth-child(3) {
+.convergent-js-svg-controls-about-desc:nth-child(3) {
   margin-top: 10px;
 }
 
-.concentric-js-svg-controls-subheader {
+.convergent-js-svg-controls-subheader {
   /* padding-left: 0 !important; */
 }
 
-.concentric-js-svg-controls-algorithm {
+.convergent-js-svg-controls-algorithm {
   margin-top: -10px;
   padding-left: 10px;
 }
 
-.concentric-js-svg-controls-list-nested-item {
+.convergent-js-svg-controls-list-nested-item {
   padding-left: 15px;
 }
