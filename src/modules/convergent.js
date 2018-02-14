@@ -1,6 +1,5 @@
 import {
   generateInitialLayout,
-  // generateLayoutBySeedAndVersion,
   generateRandomLayout
 } from '../utils/layouts';
 
