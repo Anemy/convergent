@@ -1,12 +1,16 @@
 import {
   generateInitialLayout,
-  generateLayoutBySeedAndVersion,
+  // generateLayoutBySeedAndVersion,
   generateRandomLayout
 } from '../utils/layouts';
 
 import {
-  VERSIONS
+  ALGORITHMS
 } from '../constants';
+
+import {
+  loadInitialConfig
+} from '../utils/config';
 
 export const DONE_BUILDING = 'svg/DONE_BUILDING';
 export const HISTORY_BACK = 'svg/HISTORY_BACK';
@@ -15,7 +19,7 @@ export const RANDOMIZE = 'svg/RANDOMIZE';
 export const SET_RANDOMIZE_ALGORITHM = 'svg/SET_RANDOMIZE_ALGORITHM';
 export const SET_SVG_REF = 'svg/SET_SVG_REF';
 export const START_BUILDING = 'svg/START_BUILDING';
-export const UPDATE_BACKGROUND = 'svg/UPDATE_BACKGROUND';
+export const UPDATE_LAYOUT = 'svg/UPDATE_LAYOUT';
 export const UPDATE_SVG = 'svg/UPDATE_SVG';
 
 const maxHistoryLength = 1000;
@@ -31,15 +35,16 @@ const clientHeight = document.body.clientHeight || window.innerHeight;
 export const height = Math.max(Math.floor(clientHeight - heightOfHeader), minHeight);
 export const width = Math.max(Math.floor(clientWidth), minWidth);
 
+const initialConfig = loadInitialConfig();
+
 const initialState = {
   height,
   history: [],
   future: [],
   isBuilding: false,
   present: generateInitialLayout(width, height),
-  randomizeSettings: {
-    algorithm: ALGORITHMS.FULL_RANDOM
-  },
+  randomizationConfig: initialConfig,
+  randomizeAlgorithm: ALGORITHMS.FULL_RANDOM,
   svgRef: null,
   width
 };
@@ -66,7 +71,7 @@ export default (state = initialState, action) => {
 
         newState.present = {
           ...state.present,
-          ...generateLayoutBySeedAndVersion(width, height, newPresent.seed, newPresent.version)
+          // ...generateLayoutBySeedAndVersion(width, height, newPresent.seed, newPresent.version)
         };
 
         if (newState.future.length > maxHistoryLength) {
@@ -96,7 +101,7 @@ export default (state = initialState, action) => {
 
         newState.present = {
           ...state.present,
-          ...generateLayoutBySeedAndVersion(width, height, newPresent.seed, newPresent.version)
+          // ...generateLayoutBySeedAndVersion(width, height, newPresent.seed, newPresent.version)
         };
 
         if (newState.history.length > maxHistoryLength) {
@@ -135,7 +140,7 @@ export default (state = initialState, action) => {
 
       newState.present = {
         ...state.present,
-        ...generateRandomLayout(width, height, newState.randomizeAlgorithm)
+        // ...generateRandomLayout(width, height, newState.randomizeAlgorithm)
       };
 
       if (newState.history.length > maxHistoryLength) {
@@ -156,18 +161,6 @@ export default (state = initialState, action) => {
         svgRef: action.svgRef
       };
 
-    case UPDATE_BACKGROUND:
-      const theNewState = {
-        ...state
-      };
-
-      theNewState.present = {
-        ...theNewState.present,
-        ...action.newBackground
-      }
-
-      return theNewState;
-
     default:
       return state;
   }
@@ -184,11 +177,6 @@ export const historyBack = () => ({
 
 export const historyForward = () => ({
   type: HISTORY_FORWARD
-});
-
-export const updateBackground = newBackground => ({
-  newBackground,
-  type: UPDATE_BACKGROUND
 });
 
 export const updateVisual = update => ({
@@ -214,3 +202,10 @@ export const setRandomizeAlgorithm = algorithm => {
     type: SET_RANDOMIZE_ALGORITHM
   }
 };
+
+export function updateLayout(update) {
+  return {
+    update,
+    type: UPDATE_LAYOUT
+  };
+}

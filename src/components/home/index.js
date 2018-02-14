@@ -21,7 +21,7 @@ const Home = props => {
 };
 
 const mapStateToProps = state => ({
-  isBuilding: state.canvas.isBuilding
+  isBuilding: state.convergent.isBuilding
 });
 
 const mapDispatchToProps = null;

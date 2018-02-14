@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-import { VERSIONS } from '../constants';
+import { ALGORITHMS } from '../constants';
 
 function getParameterByName(name, url) {
   if (!url) url = window.location.href;
@@ -34,7 +34,7 @@ export function getSharingVersionFromURL() {
   }
 
   let versionIndex = '';
-  const versionExists = _.some(VERSIONS, version => {
+  const versionExists = _.some(ALGORITHMS, version => {
     if (urlVersion === version) {
       versionIndex = version;
       return true;

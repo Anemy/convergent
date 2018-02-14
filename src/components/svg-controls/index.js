@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import Divider from 'material-ui/Divider';
 import { List, ListItem } from 'material-ui/List';
 import MenuItem from 'material-ui/MenuItem';
@@ -9,55 +10,51 @@ import { CompactPicker } from 'react-color';
 import { connect } from 'react-redux';
 
 import {
-  updateBackground,
   updateVisual,
   setRandomizeAlgorithm
 } from '../../modules/convergent';
 
-import { VERSIONS } from '../../constants';
+import { ALGORITHMS } from '../../constants';
 
 import { createColorString, getContrastingBinaryColor } from '../../utils/color';
 
 import './index.css';
 
-// symshapes.com
-// progenart.com
-// procgenart.com
-
-// const buttonBackgroundColor = '#FAFAFA';
-// const buttonLabelColor = '#333';
+import LayoutControl from './layout-control';
+import RandomizationControl from './randomization-control';
 
 class SvgControls extends Component {
-  setBackgroundColor = color => {
-    this.props.updateBackground({
-      backgroundColor: color.hex
-    });
-  }
-  
-  setRadialBackgroundColor = color => {
-    this.props.updateBackground({
-      radialBackgroundColor: color.hex
+  // handleAlgorithmChange = (event, index, value) => {
+  //   this.props.setRandomizeAlgorithm(value);
+  // }
+
+  renderLayoutControls() {
+    const {
+      layout
+    } = this.props;
+
+    return _.map(layout, (layoutItem, settingIndex) => {
+      return <LayoutControl
+        key={settingIndex}
+        settingIndex={settingIndex}
+      />
     });
   }
 
-  toggleRadialBackground = () => {
-    this.props.updateBackground({
-      radialBackground: !this.props.radialBackground
-    });
-  }
+  renderRandomizationConfig() {
+    const {
+      randomizationConfig
+    } = this.props;
 
-  handleAlgorithmChange = (event, index, value) => {
-    this.props.setRandomizeAlgorithm(value);
+    return _.map(randomizationConfig, (config, configIndex) => {
+      return <RandomizationControl
+        key={configIndex}
+        configIndex={configIndex}
+      />
+    });
   }
 
   render() {
-    const {
-      backgroundColor,
-      radialBackground,
-      radialBackgroundColor,
-      randomizeAlgorithm
-    } = this.props;
-
     return (
       <div className="concentric-js-svg-controls">
         <List>
@@ -76,7 +73,8 @@ class SvgControls extends Component {
           <Subheader
             className="concentric-js-svg-controls-subheader"
           >Controls</Subheader>
-          <SelectField
+          {/* TODO: On changing this, we should make sure the user is cool with changing their set up randomizer. */}
+          {/* <SelectField
             className="concentric-js-svg-controls-algorithm"
             floatingLabelText="Randomize Algorithm"
             onChange={this.handleAlgorithmChange}
@@ -85,52 +83,20 @@ class SvgControls extends Component {
             }}
             value={randomizeAlgorithm}
           >
-            <MenuItem value={VERSIONS.FULL_RANDOM} primaryText="Random" />
-            <MenuItem value={VERSIONS.TOPOLOGY} primaryText="Topology 💥" />
-            <MenuItem value={VERSIONS.TOPOLOGY_GRADIENT_PACK} primaryText="Topology with select colors" />
-            <MenuItem value={VERSIONS.TOPOLOGY_GRADIENTS} primaryText="Topology with select gradients" />
-            <MenuItem value={VERSIONS.BASIC_FIRST_GEN} primaryText="Random polygon" />
-            <MenuItem value={VERSIONS.BASIC_FIRST_GEN_BW} primaryText="Random polygon black and white" />
-            <MenuItem value={VERSIONS.BASIC_FIRST_GEN_GRADIENT_PACK} primaryText="Random polygon with select colors" />
-            <MenuItem value={VERSIONS.BASIC_FIRST_GEN_GRADIENTS} primaryText="Random polygons with select gradients" />
-            <MenuItem value={VERSIONS.WATER_COLOR} primaryText="Water color" style={{fontStyle: 'italic'}} />
-            <MenuItem value={VERSIONS.TRIANGLES} primaryText="Triangles" />
-            <MenuItem value={VERSIONS.TRIANGLES_MULTI} primaryText="Triangles 🎉🎉 - Work in progress" />
-            <MenuItem value={VERSIONS.INIT_FIRST_GEN} primaryText="Initial" />
-          </SelectField>
+            <MenuItem value={ALGORITHMS.FULL_RANDOM} primaryText="Random" />
+          </SelectField> */}
           <ListItem
-            primaryText="Background"
+            primaryText="Controls"
             initiallyOpen={true}
             primaryTogglesNestedList={true}
-            nestedItems={[
-              <div
-                className="concentric-js-svg-controls-list-nested-item"
-                key={1}
-              >
-                <CompactPicker
-                  color={backgroundColor}
-                  onChange={this.setBackgroundColor}
-                />
-              </div>,
-              <ListItem
-                key={2}
-                primaryText="Radial Background"
-                rightToggle={<Toggle
-                  onToggle={this.toggleRadialBackground}
-                  toggled={radialBackground}
-                />}
-              />,
-              <div
-                className="concentric-js-svg-controls-list-nested-item"
-                key={3}
-              >
-                <CompactPicker
-                  color={radialBackgroundColor}
-                  onChange={this.setRadialBackgroundColor}
-                />
-              </div>
-            ]}
+            nestedItems={this.renderLayoutControls()}
           />
+          {/* <ListItem
+            primaryText="Randomizer"
+            initiallyOpen={true}
+            primaryTogglesNestedList={true}
+            nestedItems={this.renderRandomizationConfig()}
+          /> */}
         </List>
       </div>
     );
@@ -138,27 +104,24 @@ class SvgControls extends Component {
 }
 
 const mapStateToProps = state => {
-  const layout = state.canvas.present;
+  const layout = state.convergent.present;
+  const randomizationConfig = state.convergent.randomizationConfig;
 
-  const shape = layout.shapes[0];
-
-  const shapeOuterColor = shape.colors[shape.colors.length - 1];
+  const shapeOuterColor = {r: 250, g: 250, b: 250};
 
   return {
-    backgroundColor: layout.backgroundColor,
     primarySVGColor: createColorString(shapeOuterColor),
     contrastPrimarySVGColor: getContrastingBinaryColor(shapeOuterColor),
-    radialBackground: layout.radialBackground,
-    radialBackgroundColor: layout.radialBackgroundColor,
-    randomizeAlgorithm: state.canvas.randomizeAlgorithm,
-    svgRef: state.canvas.svgRef
+    layout,
+    randomizeAlgorithm: state.convergent.randomizeAlgorithm,
+    randomizationConfig,
+    svgRef: state.convergent.svgRef
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     setRandomizeAlgorithm: newAlgorithm => dispatch(setRandomizeAlgorithm(newAlgorithm)),
-    updateBackground: newBackground => dispatch(updateBackground(newBackground)),
     updateVisual: change => dispatch(updateVisual(change))
   };
 };

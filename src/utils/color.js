@@ -3,6 +3,8 @@ import gradientPack from './gradients';
 // Nice blue backgorund
 // rgb(162, 198, 221)
 
+// hsl(320, 50%, 75%);
+
 // Color Bound.
 export const cb = color => Math.min(Math.max(Math.floor(color), 0), 255);
 export const colorBound = cb;
@@ -74,6 +76,14 @@ export const createRandomColor = (seeder) => ({
   b: Math.floor(seeder.rnd() * 255)
 });
 
+export function createRandomHSLColor(seeder) {
+  return {
+    h: seeder.rnd() * 321,
+    s: seeder.rnd() * 101,
+    l: seeder.rnd() * 101
+  };
+}
+
 // Possible options and defaults:
 // - maxColorRandom - a color object used for giving a max random for each possible color.
 // - blackAndWhite
@@ -119,4 +129,10 @@ export const getContrastingBinaryColor = color => {
   return `rgb(${d}, ${d}, ${d})`;
 };
 
-export const createColorString = c => `rgba(${c.r}, ${c.g}, ${c.b}, ${c.a || 1})`;
+export function createColorString(c) {
+  if (c.hasOwnProperty('r')) {
+    return `rgba(${c.r}, ${c.g}, ${c.b}, ${c.a || 1})`;
+  } else if (c.hasOwnProperty('h')) {
+    return `hsl(${c.h}, ${c.s}%, ${c.l}%)`;
+  }
+}

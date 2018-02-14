@@ -69,12 +69,12 @@ class SVG extends Component {
 };
 
 const mapStateToProps = state => {
-  const layout = state.canvas.present;
+  const layout = state.convergent.present;
 
   return {
     backgroundColor: layout.backgroundColor,
     height: layout.height,
-    isBuilding: state.canvas.isBuilding,
+    isBuilding: state.convergent.isBuilding,
     radialBackground: layout.radialBackground,
     radialBackgroundColor: layout.radialBackgroundColor,
     shapes: layout.shapes,
