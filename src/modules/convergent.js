@@ -31,6 +31,7 @@ const minWidth = 200;
 const clientWidth = window.innerWidth || document.body.clientWidth;
 const clientHeight = document.body.clientHeight || window.innerHeight;
 
+// TODO: Dynamically resize.
 export const height = Math.max(Math.floor(clientHeight - heightOfHeader), minHeight);
 export const width = Math.max(Math.floor(clientWidth), minWidth);
 

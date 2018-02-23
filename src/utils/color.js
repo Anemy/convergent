@@ -1,4 +1,4 @@
-import gradientPack from './gradients';
+import gradientPack from '../constants/gradient-set';
 
 // Nice blue backgorund
 // rgb(162, 198, 221)

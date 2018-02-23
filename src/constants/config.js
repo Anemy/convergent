@@ -5,13 +5,19 @@
 // };
 
 export const CONFIG_TYPES = {
+  ARRAY: 'array',
   BOOLEAN: 'bool',
+  CIRCLE: 'circle',
   COLOR: 'color',
   INT: 'int',
-  NUMBER: 'number'
+  NUMBER: 'number',
+  OBJECT: 'object',
+  POSITION: 'position',
+  RECTANGLE: 'rectangle'
 };
 
 export const CONFIG_RANGE_TYPES = {
+  RANDOM: 'random',
   LOG_INC: 'logarithmic-increasing'
 }
 
@@ -21,11 +27,6 @@ const baseConfig = {
       h: [0, 0],
       s: [0, 0],
       l: [0, 0]
-    },
-    possibleRange: {
-      h: [0, 360],
-      s: [0, 100],
-      l: [0, 100]
     },
     type: CONFIG_TYPES.COLOR
   },
@@ -37,9 +38,13 @@ const baseConfig = {
   },
   points: {
     initialRange: [0, 100],
+    items: {
+      type: CONFIG_TYPES.CIRCLE
+    },
     possibleRange: [0, 10000],
     rangeType: CONFIG_RANGE_TYPES.LOG_INC,
-    rangeControlType: CONFIG_RANGE_TYPES.LOG_INC
+    rangeControlType: CONFIG_RANGE_TYPES.LOG_INC,
+    type: CONFIG_TYPES.ARRAY
   },
   seed: {
     possibleRange: [0, 1000000]
