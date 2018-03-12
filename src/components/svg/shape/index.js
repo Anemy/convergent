@@ -6,14 +6,17 @@ import { connect } from 'react-redux';
 
 class Shape extends Component {
   render() {
+    console.log('Render shape w/ layout', this.props.layout);
+
     return <div />;
   }
 };
 
 const mapStateToProps = (state, ownProps) => {
-  // const layout = state.convergent.present;
+  const layout = state.convergent.present;
 
   return {
+    layout
   };
 };
 

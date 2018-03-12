@@ -12,7 +12,7 @@ export const createRandomColor = () => ({
   b: Math.floor(Math.random() * 255)
 });
 
-export default () => {
+export default function loader() {
   return (
     <div className="convergent-loader">
       <div

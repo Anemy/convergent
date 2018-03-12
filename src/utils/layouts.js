@@ -2,7 +2,7 @@ import _ from 'lodash';
 import MersenneTwister from 'mersennetwister';
 
 import {
-  CONFIG_TYPES,
+  CONFIG_TYPES
   // CONFIG_RANGE_TYPES
 } from '../constants/config';
 
@@ -21,7 +21,7 @@ export function generateLayoutUsingConfig(width, height, configurables) {
 
 function getRandomForRange(configType, rangeType, range, seeder) {
   const random = range[0] + (seeder.rnd() * (range[1] - range[0]));;
-  
+
   // TODO: Handle different kinds of point generation based on the range type.
   // Things like circle, rectangle, different distributions, sin, cos, spiral, concentric
 
@@ -52,7 +52,7 @@ function buildLayoutItem(width, height, configurables, config, seeder) {
     _.each(config.items, (item, key) => {
       objectValues[key] = buildLayoutItem(width, height, configurables, item, seeder);
     });
-    
+
     return {
       value: objectValues,
       set: false,
@@ -65,7 +65,7 @@ function buildLayoutItem(width, height, configurables, config, seeder) {
     for (let i = 0; i < amountOfItems; i++) {
       arrayValues.push(buildLayoutItem(width, height, configurables, config.items, seeder));
     }
-    
+
     return {
       value: arrayValues,
       set: false,

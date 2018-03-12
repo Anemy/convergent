@@ -4,12 +4,15 @@ import Close from 'material-ui/svg-icons/navigation/close';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import IconButton from 'material-ui/IconButton';
 import MenuIcon from 'material-ui/svg-icons/navigation/menu';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { createColorString, getContrastingBinaryColor } from '../../utils/color';
+import {
+  createColorString,
+  getContrastingBinaryColor
+} from '../../utils/color';
 
 import {
   historyBack,
@@ -134,7 +137,7 @@ class Controls extends Component {
       showSVGCode,
       showSVGControls
     } = this.state;
-    
+
     return (
       <MuiThemeProvider>
         <div
@@ -197,7 +200,7 @@ class Controls extends Component {
             label="Get Shareable Link"
             labelColor={buttonLabelColor}
           />
-          {showSVGControls && 
+          {showSVGControls &&
             <div className="convergent-js-svg-controls-container">
               <SvgControls />
             </div>
@@ -220,7 +223,7 @@ const mapStateToProps = state => {
     randomizeButtonLabelColor: getContrastingBinaryColor(outerColor),
     shareableString,
     svgRef: state.convergent.svgRef
-  }
+  };
 };
 
 const mapDispatchToProps = dispatch => {
@@ -262,6 +265,6 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default connect(
-  mapStateToProps, 
+  mapStateToProps,
   mapDispatchToProps
 )(Controls);

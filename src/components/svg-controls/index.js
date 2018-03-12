@@ -38,7 +38,7 @@ class SvgControls extends Component {
         return <LayoutControl
           key={settingIndex}
           settingIndex={settingIndex}
-        />
+        />;
       }
     });
   }
@@ -52,7 +52,7 @@ class SvgControls extends Component {
       return <RandomizationControl
         key={configIndex}
         configIndex={configIndex}
-      />
+      />;
     });
   }
 
@@ -126,6 +126,6 @@ const mapStateToProps = state => {
 // };
 
 export default connect(
-  mapStateToProps, 
+  mapStateToProps,
   null
 )(SvgControls);

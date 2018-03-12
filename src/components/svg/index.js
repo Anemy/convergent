@@ -9,6 +9,8 @@ import {
 
 import './index.css';
 
+import Shape from './shape';
+
 class SVG extends Component {
   componentDidMount() {
     this.props.setSvgRef(this.svgRef);
@@ -28,7 +30,7 @@ class SVG extends Component {
       radialBackgroundColor,
       width
     } = this.props;
-    
+
     return (
       <svg
         className="convergent-js-visual-container"
@@ -36,10 +38,13 @@ class SVG extends Component {
         ref={ref => { this.svgRef = ref; }}
         style={{
           background: radialBackground ?
-            `radial-gradient(${radialBackgroundColor}, ${backgroundColor})` : backgroundColor
+            `radial-gradient(${radialBackgroundColor}, ${backgroundColor})` :
+            backgroundColor
         }}
         width={width}
-      />
+      >
+        <Shape />
+      </svg>
     );
   }
 };
@@ -64,6 +69,6 @@ const mapDispatchToProps = dispatch => bindActionCreators({
 }, dispatch);
 
 export default connect(
-  mapStateToProps, 
+  mapStateToProps,
   mapDispatchToProps
 )(SVG);

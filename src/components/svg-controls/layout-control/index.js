@@ -21,7 +21,7 @@ class Control extends Component {
     console.log('Render layout control', this.props);
 
     return (
-      <div>  
+      <div>
         <ListItem
           primaryText="SomeToggle"
           rightToggle={<Toggle
@@ -44,7 +44,7 @@ const mapStateToProps = (state, props) => {
   // let layoutSetting;
   // if (_.isArray(settingIndex)) {
   //   for (let i = 0; i < settingIndex.length; i++) {
-  //     layoutSetting = 
+  //     layoutSetting =
   //   }
   // } else {
     const layoutSetting = layout[settingIndex];
@@ -62,6 +62,6 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default connect(
-  mapStateToProps, 
+  mapStateToProps,
   mapDispatchToProps
 )(Control);

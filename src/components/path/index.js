@@ -6,12 +6,12 @@ import './index.css';
 const Path = props => {
   const {
     id,
-    pathPoints,
+    pathPoints
   } = props;
 
   let pathDString = '';
 
-  _.each(pathPoints, (point, index) => {
+  _.each(pathPoints, point => {
     pathDString += `${point.type} `;
     if (point.type === 'C') {
       const cp = point.cp;

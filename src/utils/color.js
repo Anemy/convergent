@@ -9,7 +9,7 @@ import gradientPack from '../constants/gradient-set';
 export const cb = color => Math.min(Math.max(Math.floor(color), 0), 255);
 export const colorBound = cb;
 
-export const getStepColor = (step, steps, colors) => {
+export function getStepColor(step, steps, colors) {
   const amountOfColors = colors.length;
 
   const percentage = step / (steps - 1);
@@ -66,9 +66,9 @@ export function getRandomGradientPackColors(seeder) {
   for (let i = 0; i < gradient.colors.length; i++) {
     rgbGradient.push(hexToRgb(gradient.colors[i].slice(1)));
   }
-  
+
   return rgbGradient;
-};
+}
 
 export const createRandomColor = (seeder) => ({
   r: Math.floor(seeder.rnd() * 255),
@@ -101,12 +101,16 @@ export const createRandomColors = (amountOfColors, setOptions, seeder) => {
   const colors = [];
 
   for (let i = 0; i < amountOfColors; i++) {
-    const blackAndWhiteColor = options.blackAndWhite ? Math.floor(seeder.rnd() * (options.maxColorRandom.r)) : 0;
+    const blackAndWhiteColor = options.blackAndWhite ?
+      Math.floor(seeder.rnd() * (options.maxColorRandom.r)) : 0;
 
     colors.push({
-      r: options.blackAndWhite ? blackAndWhiteColor : Math.floor(seeder.rnd() * (options.maxColorRandom.r)),
-      g: options.blackAndWhite ? blackAndWhiteColor : Math.floor(seeder.rnd() * (options.maxColorRandom.g)),
-      b: options.blackAndWhite ? blackAndWhiteColor : Math.floor(seeder.rnd() * (options.maxColorRandom.b)),
+      r: options.blackAndWhite ? blackAndWhiteColor :
+        Math.floor(seeder.rnd() * (options.maxColorRandom.r)),
+      g: options.blackAndWhite ? blackAndWhiteColor :
+        Math.floor(seeder.rnd() * (options.maxColorRandom.g)),
+      b: options.blackAndWhite ? blackAndWhiteColor :
+        Math.floor(seeder.rnd() * (options.maxColorRandom.b)),
       a: options.maxColorRandom.a
     });
   }
@@ -117,7 +121,7 @@ export const createRandomColors = (amountOfColors, setOptions, seeder) => {
 export const getContrastingBinaryColor = color => {
   let d = 0;
 
-  // Counting the perceptive luminance - human eye favors green color... 
+  // Counting the perceptive luminance - human eye favors green color...
   const a = 1 - (0.299 * color.r + 0.587 * color.g + 0.114 * color.b) / 255;
 
   if (a < 0.5) {
